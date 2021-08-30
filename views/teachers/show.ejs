@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate') %>
+<div class="teachers-show">
+    <h1 class="teachers-show__name"><%= teacher.name %></h1>
+    <div class="teachers-show__container">
+        <div class="">
+            <img class="teachers-show__image" src="<%= teacher.image %>" alt="<%= teacher.name %>">
+            <h4 class="teachers-show__age">  سن : <%= teacher.age %>  </h4>
+            <h3 class="teachers-show__courses">مدرس : <%= teacher.course %></h3>
+        </div>
+        <div class="">
+            <p class="teachers-show__description"><%= teacher.description %></p>
+        </div>
+    </div>
+</div>
+
+<a class="btn btn-tetriary" href="/teachers/<%= teacher.id%>/edit">بازنگارش</a>
+<form action="/teachers/<%= teacher._id%>?_method=DELETE" method="post">
+    <button class="btn btn-tetriary">حذف</button>
+</form>
+

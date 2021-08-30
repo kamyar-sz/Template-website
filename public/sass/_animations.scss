@@ -1,0 +1,71 @@
+@keyframes arrow {
+    0% {
+        opacity: 1;
+        transform: translate(-10px, -10px);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-5px, -5px);
+    }
+
+}
+
+@keyframes brokenLight {
+    0%,10%,16%,20%,62% {
+        color: $color-primary;
+        text-shadow: 2px 2px 5px $color-primary,
+            -2px -2px 5px $color-primary;
+    }
+    5%,15%,18%{
+        color: $color-black;
+        text-shadow: 2px 2px 5px $color-black,
+            -2px -2px 5px $color-black;
+    }
+    22%,49%,80% {
+        color: $color-primary;
+        text-shadow: 1px 1px 5px $color-primary,
+            -1px -1px 5px $color-primary,
+            -1px 0px 5px $color-primary,
+            0px -1px 5px $color-primary;
+    }
+}
+
+@keyframes hackCarousel {
+    0%,30%,95%{
+        opacity: 1;
+        background-image: url(../img/studio-pro.jpg);
+    }
+    31% {
+        opacity: 0.2;
+        background-position: right;
+    }
+    35%,60% {
+        opacity: 1;
+        background-image: url(../img/Studio-microphon.jpg);
+    }
+    61% {
+        opacity: 0.2;
+        background-position: left;
+    }
+    65%,90% {
+        opacity: 1;
+        background-image: url(../img/Piano-royal.jpg);
+    }
+    91% {
+        background-position: unset;
+        opacity: 0.2;
+    }
+
+}
+
+@keyframes backRotate {
+    0%{
+        background-position: 0%;
+    }
+    50%{
+        background-position: 50%;
+    }
+    100%{
+        background-position: 100%;
+    }
+}

@@ -1,0 +1,31 @@
+// COLORS
+
+$color-primary: #ffd100;
+$color-primary-dark: #ffc900;
+$color-primary-light: #ffee32;
+
+$color-secondary: #310052;
+$color-secondary-dark: #25003d;
+$color-secondary-light: #510087;
+
+$color-dark-1: #202020;
+$color-dark-2: #333533;
+
+$color-grey-light-1: #d6d6d6;
+$color-grey-light-2: #a5a5a5;
+$color-grey-dark-1: #7f7f7f;
+$color-grey-dark-2: #595959;
+
+$color-white: #fff;
+$color-black: #0E1111;
+
+$color-primary-gradient: linear-gradient(to top, #ffd100, #f9834a, #b85466, #5f3d56, #202020);
+$color-hover-gradient: linear-gradient(to right, #f7ff00, #db36a4);
+$color-secondary-gradient: linear-gradient(to right, #aa076b, #61045f);
+
+$text-shadow-light: 1px 1px 3px $color-black;
+
+//
+.bg-secondary-dark {
+  background-color: $color-secondary-dark;
+}

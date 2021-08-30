@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') %>
+<div class="teachers-new">
+    <form action="/teachers" method="post" class="comment">
+        <div class="">
+            <label for="image" class="comment-label">تصویر (portrait)</label>
+            <input type="text" class="comment-input" id="image" name="teacher[image]">
+        </div>
+        <div class="">
+            <label for="name" class="comment-label">نام</label>
+            <input type="text" class="comment-input" id="name" name="teacher[name]">
+        </div>
+        <div class="">
+            <label for="course" class="comment-label">کلاس</label>
+            <input type="text" class="comment-input" id="course" name="teacher[course]">
+        </div>
+        <div class="">
+            <label for="age" class="comment-label">سن</label>
+            <input type="number" class="comment-input" id="age" name="teacher[age]">
+        </div>
+        <div class="">
+            <label for="description" class="comment-label">توضیحات</label>
+            <textarea name="teacher[description]" id="description" cols="30" rows="10" class="comment-message"></textarea>
+        </div>
+        <button class="btn btn-tetriary">ثبت و ادامه</button>
+    </form>
+    <h2 class="heading light-heading"><a href="/teachers">همه اساتید / بازگشت</a></h2>
+</div>
+

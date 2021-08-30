@@ -1,0 +1,470 @@
+.header {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    background-image: linear-gradient(45deg ,rgba($color-secondary-dark, 0.5), rgba($color-secondary-light, 0.5));
+    overflow: hidden;
+
+    @include respond(tab-port) {
+        min-height: 65vh;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 110%;
+        height: 110%;
+        background-image: url(../img/Concer-Hall.jpg);
+        background-size: cover;
+        filter: blur(4px);
+        z-index: -1;
+        left: -10px;
+    }
+
+    &__heading {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__buttons {
+
+        margin: 0 auto;
+        text-align: right;
+
+        &-btn {
+            margin: 0 1rem;
+        }
+    }
+
+    &__arrow {
+        margin: 0 auto;
+    }
+}
+
+.arrow {
+   
+    width: 3rem;
+    height: 3rem;
+    border-bottom: 2px solid $color-primary-dark;
+    border-right: 2px solid $color-primary-dark;
+    transform: rotate(45deg);
+    margin-bottom: 2rem;
+}
+
+.arrow::before {
+
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    margin: .5rem 0 0 -.9rem;
+    border-bottom: 1px solid $color-primary-dark;
+    border-right: 1px solid $color-primary-dark;
+    animation: arrow 2s infinite;
+    animation-delay: 1s;
+}
+
+.about {
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    background-color: $color-secondary;
+    color: $color-white;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        display: block;
+        position: relative;
+        padding: 0;
+    }
+    
+    &__description {
+
+        width: 100%;
+        margin: 0 0 0 1rem;
+        // border-left: 3px dotted $color-dark-1;
+        @include respond(tab-port) {
+
+            padding: 3rem;
+            position: relative;
+            margin: 0;
+            z-index: 1;
+            background-color: rgba($color-black, .8);
+        }
+    }
+
+    &__image {
+
+        width: 100%;
+        background-size: cover;
+        background-image: url(../img/studio-pro.jpg);
+        min-height: 50rem;
+        border-radius: .4rem;
+        margin: 0 2rem 0 0;
+        box-shadow: 2px 2px 15px $color-black,
+        -2px -2px 15px $color-secondary-light;
+        animation: hackCarousel 20s infinite;
+
+        @include respond(tab-port) {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border-radius: 0;
+            min-height: 100%;
+            box-shadow: none;
+        }
+    }
+}
+
+.courses {
+
+    text-align: center;
+    padding: 3rem 3rem;
+}
+
+.path {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__el{
+        flex-basis: 23%;
+        margin: 1rem;
+
+        @include respond(tab-port) {
+            flex-basis: 45%;
+        }
+    }
+    //
+    //&__name{
+    //
+    //}
+}
+
+.news {
+
+    text-align: center;
+    background-color: $color-secondary;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 3rem;
+
+    &__container {
+        list-style: none;
+        position: relative;
+        z-index: 0;
+        background-color: rgba($color-primary-dark, .5);
+        border-radius: 1rem;
+        padding: 1rem 3rem;
+        margin: 0 auto;
+        width: 50rem;
+        box-shadow: 0 0 1rem $color-secondary-dark;
+
+        &::before{
+            content: "";
+            background: inherit;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 0 3000px rgba($color-primary ,0.5);
+            filter: blur(10px);
+            z-index: -1;
+        }
+    }
+
+    &__items {
+        background-color: rgba($color-secondary-dark, 1);
+        color: $color-white;
+        margin: 2rem auto;
+        padding: 2rem;
+        border-radius: 1rem;
+        text-shadow: 1px 1px 2px $color-black;
+        position: relative;
+        box-shadow: 0 0 1rem $color-secondary-dark;
+        overflow: hidden;
+        transition: all 500ms;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 20%;
+            height: 100%;
+            background-color: rgba($color-primary, .6);
+            top: 0;
+            left: 0;
+            transform: translateX(450%);
+            clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+            //z-index: -1;
+            transition: all 500ms ease-in;
+        }
+
+        &:hover::before {
+            transform: translateX(-100%);
+        }
+        &:hover {
+            text-shadow: 0 0 5px $color-primary;
+        }
+        }
+
+
+        &-header {
+            position: absolute;
+            z-index: 1;
+
+        }
+}
+
+.teachers {
+    padding: 3rem;
+    text-align: center;
+
+    &__contain {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+
+    }
+
+    &__container{
+        position: relative;
+        overflow: hidden;
+        flex:0 1 15%;
+        background-color: transparent;
+        border-radius: 1rem;
+        box-shadow: 0 0 5px transparent;
+        transition: all 1s;
+        z-index: 0;
+        margin: 2rem .2rem;
+
+        @include respond(tab-port) {
+            flex: 0 1 25%;
+        }
+
+        @include respond(phone) {
+            flex: 0 1 49%;
+        }
+
+        &:hover {
+            flex: 0 1 36%;
+            background-color: $color-primary;
+            box-shadow: 0 0 5px $color-black;
+
+            @include respond(tab-port) {
+                flex: 0 1 48%;
+            }
+
+            @include respond(phone) {
+                flex: 0 1 70%;
+            }
+        }
+
+        &:hover &-img {
+            padding: 0;
+        }
+
+        &:hover &-img img {
+            //z-index: 1;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            border: none;
+        }
+
+        &:hover &-description {
+            opacity: 1;
+            //position: relative;
+        }
+
+        &-img{
+            width: 20rem;
+            height: 25rem;
+            padding: 1rem;
+            float: left;
+            background-color: $color-secondary;
+            color: $color-white;
+            border-radius: 1rem;
+            box-shadow: $text-shadow-light;
+            overflow: hidden;
+            transition: all .3s;
+
+            & img {
+                width: 15rem;
+                height: 17rem;
+                border-radius: 1rem;
+                border: 3px solid $color-primary;
+                transition: all 1s;
+            }
+
+        }
+
+        &-description {
+            height: 25rem;
+            position: relative;
+            z-index: -1;
+            border-radius: 1rem 0 0 1rem;
+            opacity: 0;
+            transition: all .5s;
+            transition-delay: 1s;
+            text-align: right;
+            padding: 1rem 1rem 1rem 3rem;
+        }
+    }
+}
+
+footer {
+    background-color: $color-secondary-dark;
+    padding: 1rem;
+
+    & h2{
+        text-align: center;
+    }
+}
+
+.footer-secondary {
+    //position: absolute;
+    //bottom: 0;
+    //width: 100%;
+
+}
+
+.contact {
+    color: $color-primary;
+    font-size: 1.6rem;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+
+    & label {
+        margin: 1rem 0;
+    }
+
+    &__contacts{
+        width: 100%;
+        padding:3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        & span {
+            display: block;
+            text-align: right;
+        }
+
+        & label {
+            display: block;
+            text-align: right;
+            font-weight: 500;
+        }
+
+    }
+
+    &__comments{
+        width: 100%;
+        padding:3rem;
+
+    }
+}
+
+
+.comment {
+
+    &-label{
+        float: right;
+        font-weight: 500;
+    }
+
+    &-input{
+        display: block;
+        width: 100%;
+        height: 3rem;
+        border-radius: .5rem;
+        border: none;
+        transition: all 1s;
+        outline: solid .2rem transparent;
+        font-family: 'Vazir', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 300;
+        padding: 1rem;
+
+        &::placeholder{
+            direction: rtl;
+            text-align: right;
+            color: $color-secondary-dark;
+            opacity: .5;
+            transition: all 1s;
+        }
+
+        &:focus,
+        &:active {
+            outline: solid .2rem $color-primary;
+
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+    }
+
+
+    &-message{
+        display: block;
+        resize: none;
+        width: 100%;
+        font-family: 'Vazir', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 300;
+        border: none;
+        border-radius: .5rem;
+        padding: 1rem;
+    }
+}
+
+.social-media {
+    text-align: right;
+    display: block;
+
+    &s {
+        text-decoration: none;
+        margin-right: 1.2rem;
+    }
+}
+
+.footer-logo {
+    text-align: center;
+    align-self: center;
+    align-content: center;
+
+    & p {
+        margin: 1rem;
+    }
+}
+
+.cp-text {
+    text-align: center;
+    padding: 1rem;
+    color: $color-primary;
+}
+
+
+
+

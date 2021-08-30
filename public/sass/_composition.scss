@@ -1,0 +1,99 @@
+.card {
+
+    position: relative;
+    width: 30rem;
+    height: 20rem;
+    border-radius: 1rem;
+    box-shadow: $text-shadow-light;
+    text-align: center;
+    overflow: hidden;
+    transform: translateY(0);
+    transition: all 1s;
+
+    &:hover {
+
+        transform: translateY(-.5rem);
+        box-shadow: 2px 2px 4px $color-black;
+    }
+
+    &:hover &-background {
+
+        filter: blur(.1rem) grayscale(0);
+        background-size: 150%;
+    }
+
+    &:hover &-btn {
+
+        top: 80%;
+        animation: brokenLight 5s infinite;
+    }
+
+
+    &-background {
+
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-size: 110%;
+        z-index: -1;
+        filter: blur(.3rem) grayscale(1);
+        transition: filter 1s, background-size 3s;
+    }
+
+    &-heading {
+
+        font-size: 3rem;
+        font-weight: 300;
+        color: $color-black;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, .6);
+        padding: .7rem;
+        border-radius: inherit;
+
+    }
+
+    &-btn {
+
+        position: relative;
+        bottom: 0;
+        top: 120%;
+        margin: 0 auto;
+        text-decoration: none;
+        color: $color-primary;
+        padding: .5rem 3rem;
+        box-shadow: -2px -2px 4px $color-black;
+        border-radius: inherit;
+        background-color: $color-secondary-light;
+        transition: all 1s;
+    }
+}
+
+#bg1 {
+    background-image: url(../img/Piano.jpg);
+}
+#bg2 {
+    background-image: url(../img/Folk.jpg);
+}
+#bg3 {
+    background-image: url(../img/Singing.jpg);
+}
+#bg4 {
+    background-image: url(../img/Rock.jpg);
+}
+#bg5 {
+    background-image: url(../img/Jazz.jpg);
+}
+#bg6 {
+    background-image: url(../img/Blues.jpg);
+}
+#bg7 {
+    background-image: url(../img/Editing.jpg);
+}
+#bg8 {
+    background-image: url(../img/Photography.jpg);
+}

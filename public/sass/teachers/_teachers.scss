@@ -1,0 +1,111 @@
+.section-teachers {
+
+  display: flex;
+  margin: 2rem 1rem;
+  direction: rtl;
+  position: relative;
+  border: 1px solid $color-secondary-dark;
+  border-radius: 3rem;
+  overflow: hidden;
+  max-height: 25rem;
+
+  &__img {
+
+    & img {
+      width: 20rem;
+      height: 100%;
+    }
+  }
+
+  &__description {
+    margin: 0 2rem 0 0;
+  }
+
+  &__heading {
+    font-size: 3rem;
+    font-weight: 600;
+    transition: all 1s;
+
+    &:hover {
+      text-shadow: 1px 1px 1px $color-black;
+      transform: translateY(-.2rem);
+    }
+
+    a,
+    a:visited {
+      text-decoration: none;
+      color: $color-secondary-light;
+    }
+
+  }
+
+  &__paragraph {
+
+  }
+}
+
+.teachers-new {
+
+  padding: 2rem;
+  color: $color-secondary-dark;
+  min-height: 100vh;
+
+  input {
+    border: 1px solid $color-secondary-dark;
+    margin-bottom: 1rem;
+  }
+
+  textarea {
+    border: 1px solid $color-secondary-dark;
+  }
+}
+
+.teachers-show {
+
+  display: block;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+
+  &__name {
+
+    display: block;
+    text-align: center;
+    color: $color-secondary-dark;
+    transition: all 1s;
+    direction: rtl;
+    margin-bottom: 2rem;
+
+    &:hover {
+      text-shadow: 1px 2px 5px $color-black;
+      transform: translateY(-.2rem);
+    }
+  }
+
+  &__container {
+
+    display: flex;
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  &__image {
+    max-width: 40rem;
+    max-height: 50rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__age {
+    border-top: 1px solid $color-secondary;
+    display: block;
+    padding-top: 1rem;
+  }
+
+  &__description {
+    margin: 0 2rem;
+  }
+
+  &__courses {
+    display: block;
+  }
+}

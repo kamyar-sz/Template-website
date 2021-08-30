@@ -1,0 +1,29 @@
+<% layout('layouts/boilerplate') %>
+<div class="teachers-new">
+    <h1> بازنگارش <%= teacher.name %> </h1>
+    <form action="/teachers/<%=teacher._id%>?_method=PUT" method="post" class="comment validated-form" novalidate>
+        <div class="">
+            <label for="image" class="comment-label">تصویر (portrait)</label>
+            <input   type="text" class="comment-input" id="image" name="teacher[image]" value="<%= teacher.image %>" required>
+        </div>
+        <div class="">
+            <label for="name" class="comment-label">نام</label>
+            <input dir="rtl" type="text" class="comment-input" id="name" name="teacher[name]" value="<%= teacher.name %>" required>
+        </div>
+        <div class="">
+            <label for="course" class="comment-label">کلاس</label>
+            <input dir="rtl" type="text" class="comment-input" id="course" name="teacher[course]" value="<%= teacher.course %>" required>
+        </div>
+        <div class="">
+            <label for="age" class="comment-label">سن</label>
+            <input dir="rtl" type="number" class="comment-input" id="age" name="teacher[age]" value="<%= teacher.age %>" required>
+        </div>
+        <div class="">
+            <label for="description" class="comment-label">توضیحات</label>
+            <textarea dir="rtl" name="teacher[description]" id="description" cols="30" rows="10" class="comment-message" required><%= teacher.description %></textarea>
+        </div>
+        <button class="btn btn-tetriary">ثبت تغییرات</button>
+    </form>
+    <a class="btn btn-tetriary" href="/teachers/<%=teacher._id%>">بازگشت</a>
+
+</div>

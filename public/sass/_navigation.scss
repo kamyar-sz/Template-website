@@ -1,0 +1,89 @@
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    text-align: center;
+    top: 0;
+
+    &__list {
+        list-style: none;
+    }
+
+    &__items {
+
+        display: inline-block;
+        margin: 1rem 0;
+        border-radius: .5rem;
+        transition: all 1s;
+        border: 1px solid transparent;
+        backface-visibility: hidden;
+
+        &:first-child{
+            margin-right: 2rem;
+        }
+
+        &:not(:first-child) {
+            margin-right: 1rem;
+        }
+
+        &:hover {
+            // background: rgba($color-white, .1);
+            transform: translateY(-.2rem);
+            border: 1px solid $color-white;
+            box-shadow: .2rem .0rem 1.5rem $color-white,
+                inset -15rem 0 1rem rgba($color-white, .5),
+                inset 15rem 0 1rem rgba($color-white, .5);
+        }
+    }
+
+    &__link {
+
+        padding: 0 2rem;
+        color: $color-white;  
+        background: $color-secondary;
+        -webkit-background-clip: text;
+        background-clip: text;
+        text-shadow: $text-shadow-light;  
+        transition: all .5s ease-in;
+    
+        &:hover {  
+            font-weight: 500;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+    }
+}
+
+.logo {
+    
+    font-family: 'Big Shoulders Stencil Display', cursive;
+    font-weight: 600;
+    font-size: 5rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    padding: 0 2rem;
+    color: $color-primary-dark;
+    text-decoration: none;
+    background: $color-hover-gradient;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: $text-shadow-light;  
+    border: 1px solid transparent;
+    margin: 1rem;
+    transition: all 1s;
+    backface-visibility: hidden;
+    border-radius: .5rem;
+
+    &:hover {  
+        -webkit-text-fill-color: $color-primary;
+        text-shadow: none;
+        -webkit-text-stroke-width: .2rem;
+        -webkit-text-stroke-color: $color-white;
+        box-shadow: .2rem .0rem 1.5rem $color-secondary-light,
+                inset 0 10rem 1rem rgba($color-secondary-light, .8),
+                inset 0 -10rem 1rem rgba($color-secondary-light, .8);
+        border: 1px solid $color-secondary;
+    }
+}

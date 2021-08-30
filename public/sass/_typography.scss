@@ -1,0 +1,91 @@
+a,
+a:visited {
+    text-decoration: none;
+}
+
+.heading {
+
+    &-main {
+
+        font-weight: 700;
+        font-size: 10rem;
+        margin: 0 auto;
+        color: $color-primary;
+        text-align: center;
+        text-shadow: 0 0 5px $color-black,
+        2px 0 10px $color-black;
+
+        @include respond(tab-port) {
+            font-size: 8rem;
+        }
+        @include respond(phone) {
+            font-size: 6.5rem;
+        }
+    }
+
+    &-english {
+
+        text-align: left;
+        width: max-content;
+        background: $color-secondary-gradient;
+        color: $color-white;
+        font-weight: 100;
+        font-size: 2rem;
+        padding: .2rem 1rem;
+        border-radius: 1rem;
+        text-shadow: $text-shadow-light;
+        z-index: 1;
+    }
+}
+
+h2 {
+
+    direction: rtl;
+    font-size: 4rem;
+    font-weight: 300;
+    margin: 1.5rem;
+    text-shadow: 1px 1px 3px $color-black;
+    display: block;
+    cursor: default;
+    transition: all 1s;
+
+    &:hover {
+        text-shadow: 1px 2px 5px $color-black;
+        transform: translateY(-.2rem);
+    }
+
+    @include respond(tab-port) {
+        margin-bottom: 2rem;
+        font-size: 3rem;
+    }
+}
+
+p {
+    direction: rtl;
+    margin: 1rem 0 1rem 1rem;
+    line-height: 3rem;
+
+    @include respond(tab-port) {
+        line-height: 2rem;
+    }
+}
+
+.light-heading {
+    color: $color-primary;
+}
+
+.dark-heading {
+    color: $color-secondary-dark;
+}
+
+.icon {
+
+    width: 2rem;
+    height: 2rem;
+    fill: $color-primary;
+    margin-top: 1rem;
+}
+
+h3 {
+    display: inline-block;
+}

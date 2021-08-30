@@ -1,0 +1,27 @@
+* {
+
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before {
+
+    box-sizing: border-box;
+    position: relative;
+}
+
+html {
+
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Vazir', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 100;
+    color: $color-black;
+    min-height: 100vh;
+}
+

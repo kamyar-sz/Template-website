@@ -1,0 +1,70 @@
+.btn {
+
+    font-size: 2.8rem;
+    font-weight: 100;
+    text-decoration: none;
+    border-radius:.5rem;
+
+    @include respond(tab-port) {
+        font-size: 2rem;
+    }
+    
+    &-primary {
+
+        padding: 1rem 3rem;
+        color: $color-secondary-dark;
+        text-shadow: $text-shadow-light;
+        box-shadow: $text-shadow-light;
+        transform: translateY(0);
+        transition: 1s all;
+        border: 3px solid $color-secondary-dark;
+
+        &:hover {
+
+            color: $color-primary;
+            transform: translateY(5px);
+            text-shadow: 2px 2px 5px $color-primary,
+            -2px -2px 5px $color-primary;
+            box-shadow: .2rem .0rem 2rem $color-secondary-dark,
+            inset 0 10rem 1rem rgba($color-secondary-light, .5),
+            inset 30rem 0 1rem rgba($color-secondary-light, .5),
+            inset -30rem 0 1rem rgba($color-secondary-light, .5),
+            inset 0 -10rem 1rem rgba($color-secondary-light, .5);
+            animation-delay: 1s;
+            animation: brokenLight 3s infinite;
+            border: 2px solid $color-primary-dark;
+
+        }
+    }
+
+    &-primary {
+        background: $color-primary-dark;
+    }
+
+    &-secondary {
+
+        padding: 1rem 3rem;
+        background: $color-white;
+        color: $color-secondary;
+        border: 3px solid $color-secondary;
+        transition: all .5s;
+
+        &:hover {
+
+            background: $color-secondary-light;
+            border: 3px solid transparent;
+            box-shadow: $text-shadow-light;
+            color: $color-white;
+            transform: translateX(-2rem);
+        }
+    }
+    &-tetriary {
+        padding: .5rem;
+        background: $color-primary;
+        color: $color-secondary;
+        font-size: 1.5rem;
+        border: 1px solid $color-secondary;
+        margin: 1rem;
+        display: inline-block;
+    }
+}
