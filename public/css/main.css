@@ -215,6 +215,10 @@ body {
   color: #0E1111;
   min-height: 100vh; }
 
+.container {
+  direction: rtl;
+  min-height: 100vh; }
+
 .btn {
   font-size: 2.8rem;
   font-weight: 100;
@@ -329,6 +333,9 @@ body {
     margin: 0 2rem; }
   .teachers-show__courses {
     display: block; }
+
+.comment {
+  direction: rtl; }
 
 .navigation {
   width: 100%;

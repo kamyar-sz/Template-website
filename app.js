@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
+const catchAsync = require('./utils/catchAsync');
+const expressError = require('./utils/expressErrors');
+const { teacherSchema } = require('./schemas.js');
 const methodOverride = require('method-override');
 const Teacher = require('./models/teachers');
 
@@ -42,30 +45,40 @@ app.get('/teachers/new', (req, res) => {
   res.render('teachers/new');
 })
 
-app.post('/teachers', async(req, res) => {
+app.post('/teachers', catchAsync(async(req, res) => {
   const teacher = new Teacher(req.body.teacher);
   await teacher.save();
   res.redirect('/teachers');
-})
+}))
 
-app.get('/teachers/:id', async(req, res) => {
+app.get('/teachers/:id', catchAsync(async(req, res) => {
   const teacher = await Teacher.findById(req.params.id);
   res.render('teachers/show', { teacher });
-})
+}))
 
-app.get('/teachers/:id/edit', async(req, res) => {
+app.get('/teachers/:id/edit', catchAsync(async(req, res) => {
   const teacher = await Teacher.findById(req.params.id);
   res.render('teachers/edit', { teacher });
-})
+}))
 
-app.put('/teachers/:id', async(req, res) => {
+app.put('/teachers/:id', catchAsync(async(req, res) => {
   const teacher = await Teacher.findByIdAndUpdate(req.params.id, { ...req.body.teacher });
   res.redirect(`/teachers/${teacher._id}`);
-})
+}))
 
-app.delete('/teachers/:id', async(req, res) => {
+app.delete('/teachers/:id', catchAsync(async(req, res) => {
   const teacher = await Teacher.findByIdAndDelete(req.params.id);
   res.redirect('/teachers');
+}));
+
+app.all('*', (req, res, next) => {
+  next(new expressError('صفحه مورد نظر پیدا نشد !', 404))
+})
+
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if(!err.message) err.message = 'خطایی رخ داده است !'
+  res.status(statusCode).render('error', { err });
 })
 
 app.listen(3000, () => {
