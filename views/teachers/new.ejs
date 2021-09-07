@@ -10,16 +10,28 @@
             <input type="text" class="form-control comment-input" id="name" name="teacher[name]" required>
         </div>
         <div class="">
-            <label for="course" class="form-label comment-label">کلاس</label>
-            <input type="text" class="form-control comment-input" id="course" name="teacher[course]" required>
-        </div>
-        <div class="">
             <label for="age" class="form-label comment-label">سن</label>
             <input type="text" class="form-control comment-input" id="age" name="teacher[age]" required>
         </div>
         <div class="">
             <label for="description" class="form-label comment-label">توضیحات</label>
             <textarea name="teacher[description]" id="description" cols="30" rows="10" class="form-control comment-message" required></textarea>
+        </div>
+        <div class="">
+            <label for="course" class="form-label comment-label">دوره</label>
+            <select name="teacher[course]" id="course">
+                <% for(let course of courses) {%>
+                    <option value="<%= course._id %>"><%= course.name %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="">
+            <label for="instrument" class="form-label comment-label">ساز</label>
+            <select name="teacher[instrument]" id="instrument">
+                <% for(let instrument of instruments) {%>
+                    <option value="<%= instrument._id %>"><%= instrument.name %></option>
+                <% } %>
+            </select>
         </div>
         <button class="btn btn-tetriary">ثبت و ادامه</button>
     </form>

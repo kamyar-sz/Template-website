@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %>
+
+<% for(let instrument of instruments) { %>
+
+    <div>
+        <h1><a href="/instruments/<%= instrument._id %>"><%= instrument.name %></a></h1>
+        <li><%= instrument.image %></li>
+    </div>
+<% } %>
+
+<a href="/instruments/new" class="btn btn-tetriary">ساز جدید</a>

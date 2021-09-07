@@ -9,7 +9,11 @@
         </div>
         <div class="section-teachers__description">
             <h3 class="section-teachers__heading"><a href="/teachers/<%= teacher._id %>"><%= teacher.name %></a></h3>
-            <h4><%= teacher.course %></h4>
+            <h4>
+                <% for (let instrument of teacher.instrument) {%>
+                    <a href="/instruments/<%= instrument._id %>"><%= instrument.name %></a>
+                <% } %>
+            </h4>
             <p class="section-teachers__paragraph"><%= teacher.description %></p>
 
         </div>

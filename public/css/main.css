@@ -213,11 +213,15 @@ body {
   font-size: 1.4rem;
   font-weight: 100;
   color: #0E1111;
-  min-height: 100vh; }
+  text-align: justify; }
 
 .container {
   direction: rtl;
-  min-height: 100vh; }
+  min-height: 100vh;
+  text-align: justify; }
+
+p {
+  text-align: justify; }
 
 .btn {
   font-size: 2.8rem;
@@ -407,7 +411,7 @@ body {
   justify-content: space-between;
   align-content: center;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 95vh;
   position: relative;
   background-image: linear-gradient(45deg, rgba(37, 0, 61, 0.5), rgba(81, 0, 135, 0.5));
   overflow: hidden; }
@@ -463,6 +467,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: row-reverse;
+  text-align: justify;
   background-color: #310052;
   color: #fff;
   padding: 3rem; }

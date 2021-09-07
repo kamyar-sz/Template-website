@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+
+<form action="/instruments/<%= instrument._id%>?_method=PUT" method="post" class="validated-form comment" novalidate>
+    <div class="">
+        <label for="name" class="form-label comment-label">نام ساز</label>
+        <input type="text" class="form-control comment-input" id="name" name="instrument[name]" value="<%= instrument.name %>" required>
+    </div>
+    <div class="">
+        <label for="icon" class="form-label comment-label">آیکون</label>
+        <input type="text" class="form-control comment-input" id="icon" name="instrument[icon]" value="<%= instrument.icon %>" required>
+    </div>
+    <div class="">
+        <label for="image" class="form-label comment-label">تصویر</label>
+        <input type="text" class="form-control comment-input" id="image" name="instrument[image]" value="<%= instrument.image %>" required>
+    </div>
+    <div class="">
+        <label for="price" class="form-label comment-label">هزینه در ساعت</label>
+        <input type="text" class="form-control comment-input" id="price" name="instrument[price]" value="<%= instrument.price %>" required>
+    </div>
+    <div class="">
+        <label for="description" class="form-label comment-label">توضیحات</label>
+        <textarea name="instrument[description]" id="description" cols="30" rows="10" class="form-control comment-message" required><%= instrument.description %></textarea>
+    </div>
+    <button class="btn btn-tetriary">ثبت و ادامه</button>
+</form>

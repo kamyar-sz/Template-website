@@ -13,7 +13,6 @@
 }
 
 html {
-
     font-size: 62.5%;
 }
 
@@ -22,11 +21,16 @@ body {
     font-size: 1.4rem;
     font-weight: 100;
     color: $color-black;
-    min-height: 100vh;
+    text-align: justify;
 }
 
 .container {
     direction: rtl;
     min-height: 100vh;
+    text-align: justify;
+}
+
+p {
+    text-align: justify;
 }
 

@@ -1,0 +1,16 @@
+<% layout('layouts/boilerplate') %>
+    <form action="/courses" method="post" class="validated-form comment" novalidate>
+        <div class="">
+            <label for="image" class="form-label comment-label">نام دوره</label>
+            <input type="text" class="form-control comment-input" id="image" name="course[name]" required>
+        </div>
+        <div class="">
+            <label for="name" class="form-label comment-label">تصویر پس زمینه</label>
+            <input type="text" class="form-control comment-input" id="name" name="course[image]" required>
+        </div>
+        <div class="">
+            <label for="description" class="form-label comment-label">توضیحات</label>
+            <textarea name="course[description]" id="description" cols="30" rows="10" class="form-control comment-message" required></textarea>
+        </div>
+        <button class="btn btn-tetriary">ثبت و ادامه</button>
+    </form>

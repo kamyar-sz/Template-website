@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-content: center;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 95vh;
     position: relative;
     background-image: linear-gradient(45deg ,rgba($color-secondary-dark, 0.5), rgba($color-secondary-light, 0.5));
     overflow: hidden;
@@ -78,6 +78,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row-reverse;
+    text-align: justify;
     background-color: $color-secondary;
     color: $color-white;
     padding: 3rem;
@@ -89,7 +90,6 @@
     }
     
     &__description {
-
         width: 100%;
         margin: 0 0 0 1rem;
         // border-left: 3px dotted $color-dark-1;

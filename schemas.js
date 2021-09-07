@@ -7,5 +7,6 @@ module.exports.teacherSchema = Joi.object({
     image: Joi.string().required(),
     description: Joi.string().required(),
     course: Joi.string().required(),
+    instrument: Joi.string().required(),
   }).required()
 });

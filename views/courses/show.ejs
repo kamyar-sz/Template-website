@@ -1,0 +1,19 @@
+<% layout('layouts/boilerplate') %>
+
+    <h1><%= course.name %></h1>
+    <img src="<%= course.image %>" alt="">
+    <p><%= course.description %></p>
+    <% for (let instrument of course.instrument) {%>
+        <li><a href="/instruments/<%= instrument._id %>"><%= instrument.name %></a></li>
+    <% } %>
+
+    <% for (let teacher of course.teacher) {%>
+        <li><a href="/teachers/<%= teacher._id %>"><%= teacher.name %></a></li>
+    <% } %>
+
+
+
+<a class="btn btn-tetriary" href="/courses/<%= course.id%>/edit">بازنگارش</a>
+<form action="/courses/<%= course._id%>?_method=DELETE" method="post">
+    <button class="btn btn-tetriary">حذف</button>
+</form>

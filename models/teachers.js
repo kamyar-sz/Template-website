@@ -6,7 +6,16 @@ const TeacherSchema = new Schema({
   age: Number,
   description: String,
   image: String,
-  course: String
+  course: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Course'
+    }
+  ],
+  instrument: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Instrument'
+  }],
 });
 
 module.exports = mongoose.model('Teacher', TeacherSchema);
