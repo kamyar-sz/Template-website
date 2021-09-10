@@ -65,6 +65,7 @@
         font-size: 1.5rem;
         border: 1px solid $color-secondary;
         margin: 1rem;
-        display: inline-block;
+        max-width: 20rem;
+        display: block;
     }
 }

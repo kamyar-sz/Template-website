@@ -4,16 +4,28 @@
     <div class="teachers-show__container">
         <div class="">
             <img class="teachers-show__image" src="<%= teacher.image %>" alt="<%= teacher.name %>">
-            <h3 class="teachers-show__courses">مدرس :
-                <% for (let course of teacher.course) {%>
-                    <a href="/courses/<%= course._id %>"><%= course.name %></a>
-                <% } %>
-            </h3>
-            <h3 class="teachers-show__courses">ساز :
+            <div>
+                مدرس :
+                    <% for (let course of teacher.course) {%>
+                        <a href="/courses/<%= course._id %>">
+                            <h3 class="tag">
+                                <%= course.name %>
+                            </h3>
+                        </a>
+                    <% } %>
+            </div>
+            <% if (teacher.instrument) {%>
+            <div>
+                ساز :
                 <% for (let instrument of teacher.instrument) {%>
-                   <a href="/courses/<%= instrument._id %>"><%= instrument.name %></a>
+                    <a href="/instruments/<%= instrument._id %>">
+                        <h3 class="tag">
+                            <%= instrument.name %>
+                        </h3>
+                    </a>
                 <% } %>
-            </h3>
+            </div>
+            <% } %>
             <h4 class="teachers-show__age">  سن : <%= teacher.age %>  </h4>
         </div>
         <div class="">

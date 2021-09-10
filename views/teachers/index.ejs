@@ -2,18 +2,22 @@
 
     <h2 class="heading dark-heading">هنرآموزان آموزشگاه</h2>
     <% for(let teacher of teachers) {%>
-<!--    <li><a href="/teachers/<%= teacher._id %>"><%= teacher.name %></a></li>-->
     <div class="section-teachers">
         <div class="section-teachers__img">
             <img src="<%= teacher.image %>" alt="<%= teacher.name %>">
         </div>
         <div class="section-teachers__description">
             <h3 class="section-teachers__heading"><a href="/teachers/<%= teacher._id %>"><%= teacher.name %></a></h3>
-            <h4>
+
+            <% if (teacher.instrument) {%>
                 <% for (let instrument of teacher.instrument) {%>
-                    <a href="/instruments/<%= instrument._id %>"><%= instrument.name %></a>
+                    <a href="/instruments/<%= instrument._id %>">
+                        <h4 class="tag">
+                            <%= instrument.name %>
+                        </h4>
+                    </a>
                 <% } %>
-            </h4>
+            <% } %>
             <p class="section-teachers__paragraph"><%= teacher.description %></p>
 
         </div>

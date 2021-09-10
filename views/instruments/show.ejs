@@ -1,17 +1,31 @@
 <% layout('layouts/boilerplate') %>
 
-    <div>
-        <h1><%= instrument.name %></h1>
-        <li><%= instrument.icon %></li>
-        <li><%= instrument.image %></li>
-        <li><%= instrument.description %></li>
-        <% for (let course of instrument.course) {%>
-            <li><a href="/courses/<%= course._id %>"><%= course.name %></a></li>
-        <% } %>
-        <li><%= instrument.price %></li>
-    </div>
+<!--    <div>-->
+<!--        <h1><%= instrument.name %></h1>-->
+<!--        <li><%= instrument.icon %></li>-->
+<!--        <li><%= instrument.image %></li>-->
+<!--        <li><%= instrument.description %></li>-->
+<!--        <% for (let course of instrument.course) {%>-->
+<!--            <li><a href="/courses/<%= course._id %>"><%= course.name %></a></li>-->
+<!--        <% } %>-->
+<!--        <li><%= instrument.price %></li>-->
+<!--    </div>-->
+<div class="section-instruments-show">
+    <img class="section-instruments-show__image" src="<%= instrument.image %>" alt="<%= instrument.name %>">
+    <h2 class="section-instruments-show__heading heading-secondary"><%= instrument.name %></h2>
+    <p class="section-instruments-show__paragraph"><%= instrument.description %></p>
+    <h3 class="section-instruments-show__heading">دوره های آموزشگاه :</h3>
+    <% for (let course of instrument.course) {%>
+        <a href="/courses/<%= course._id %>">
+            <div class="section-instruments-show__categories"><%= course.name %></div>
+        </a>
+    <% } %>
 
-<a href="/instruments/<%= instrument._id%>/edit" class="btn btn-tetriary">اصلاح</a>
-<form action="/instruments/<%= instrument._id%>?_method=DELETE" method="post">
-    <button class="btn btn-tetriary">حذف</button>
-</form>
+    <a href="/instruments/<%= instrument._id%>/edit" class="btn btn-tetriary">اصلاح</a>
+    <form action="/instruments/<%= instrument._id%>?_method=DELETE" method="post">
+        <button class="btn btn-tetriary">حذف</button>
+    </form>
+</div>
+
+
+

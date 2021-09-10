@@ -21,13 +21,12 @@ body {
     font-size: 1.4rem;
     font-weight: 100;
     color: $color-black;
-    text-align: justify;
 }
 
-.container {
-    direction: rtl;
+.container-fluid {
     min-height: 100vh;
-    text-align: justify;
+    direction: rtl;
+    padding: 0;
 }
 
 p {
