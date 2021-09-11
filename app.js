@@ -2,10 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const catchAsync = require('./utils/catchAsync');
 const methodOverride = require('method-override');
-const Course = require('./models/course');
-const Instrument = require('./models/instrument');
 
 const teachers = require('./routes/teachers');
 const courses = require('./routes/courses');
@@ -15,7 +12,8 @@ const instruments = require('./routes/instruments');
 mongoose.connect('mongodb://localhost:27017/Music-site', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;
@@ -30,11 +28,9 @@ app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// app.use(express.static(__dirname + '/public'));
-app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTE HANDLERS
 

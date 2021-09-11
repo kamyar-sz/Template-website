@@ -16,14 +16,4 @@ const courseSchema = new Schema({
   }],
 })
 
-// courseSchema.post('findOneAndDelete', async function (doc) {
-//   if (doc) {
-//     await Instrument.deleteMany({
-//       _id: {
-//         $in: doc.instrument
-//       }
-//     })
-//   }
-// })
-
 module.exports = mongoose.model("Course", courseSchema)

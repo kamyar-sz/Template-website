@@ -16,14 +16,4 @@ const instrumentSchema = new Schema({
   price: Number
 });
 
-// instrumentSchema.post('findOneAndDelete', async function (doc) {
-//   if (doc) {
-//     await Course.deleteMany({
-//       _id: {
-//         $in: doc.course
-//       }
-//     })
-//   }
-// })
-
 module.exports = mongoose.model("Instrument", instrumentSchema)
