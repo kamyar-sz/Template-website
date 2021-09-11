@@ -28,16 +28,25 @@ router.get('/new', (req, res) => {
 router.post('/', validateCourse, catchAsync(async(req, res) => {
   const course = new Course(req.body.course);
   await course.save();
+  req.flash('success', `${course.name} was successfully Added!`);
   res.redirect('/courses');
 }))
 
 router.get('/:id', catchAsync(async(req, res) => {
   const course = await Course.findById(req.params.id).populate('instrument').populate('teacher');
+  if (!course) {
+    req.flash('error', 'Cannot find that course!');
+    return res.redirect('/courses');
+  }
   res.render('courses/show', { course })
 }));
 
 router.get('/:id/edit', catchAsync(async(req, res) => {
   const course = await Course.findById(req.params.id);
+  if (!course) {
+    req.flash('error', 'Cannot find that course!');
+    return res.redirect('/courses');
+  }
   res.render('courses/edit', { course });
 }));
 
@@ -45,6 +54,7 @@ router.get('/:id/edit', catchAsync(async(req, res) => {
 
 router.put('/:id', validateCourse, catchAsync(async(req, res) => {
   const course = await Course.findByIdAndUpdate(req.params.id, { ...req.body.course });
+  req.flash('success', `${course.name} was successfully Updated!`);
   res.redirect(`/courses/${course._id}`);
 }));
 
@@ -53,6 +63,7 @@ router.delete('/:id', catchAsync(async(req, res) => {
   const course = await Course.findById(id);
   await Instrument.findByIdAndUpdate(course.instrument, { $pull: { course : id}});
   await Course.findByIdAndDelete(id);
+  req.flash('success', `${course.name} was successfully Deleted!`);
   res.redirect('/courses');
 }));
 

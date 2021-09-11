@@ -36,16 +36,25 @@ router.post('/', validateTeacher, catchAsync(async(req, res) => {
   const teacher = new Teacher(req.body.teacher);
   await Course.updateMany({'_id' : teacher.course}, { $push: {teacher : teacher._id}})
   await teacher.save();
-  res.redirect('/teachers');
+  req.flash('success', `${teacher.name} was successfully added`);
+  res.redirect(`/teachers/${teacher._id}`);
 }))
 
 router.get('/:id', catchAsync(async(req, res) => {
   const teacher = await Teacher.findById(req.params.id).populate('instrument').populate('course');
+  if (!teacher) {
+    req.flash('error', 'Cannot find that teacher!');
+    return res.redirect('/teachers');
+  }
   res.render('teachers/show', { teacher });
 }))
 
 router.get('/:id/edit', catchAsync(async(req, res) => {
   const teacher = await Teacher.findById(req.params.id);
+  if (!teacher) {
+    req.flash('error', 'Cannot find that teacher!');
+    return res.redirect('/teachers');
+  }
   res.render('teachers/edit', { teacher });
 }));
 
@@ -54,6 +63,7 @@ router.get('/:id/edit', catchAsync(async(req, res) => {
 
 router.put('/:id', validateTeacher, catchAsync(async(req, res) => {
   const teacher = await Teacher.findByIdAndUpdate(req.params.id, { ...req.body.teacher });
+  req.flash('success', `${teacher.name} was successfully updated!`);
   res.redirect(`/teachers/${teacher._id}`);
 }))
 
@@ -62,6 +72,7 @@ router.delete('/:id', catchAsync(async(req, res) => {
   const teacher = await Teacher.findById(id);
   await Course.findByIdAndUpdate(teacher.course, { $pull: { teacher: id }});
   await Teacher.findByIdAndDelete(id);
+  req.flash('success', `${teacher.name} was successfully deleted!`);
   res.redirect('/teachers');
 }));
 

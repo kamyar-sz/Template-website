@@ -226,9 +226,7 @@ body {
   color: #0E1111; }
 
 .container-fluid {
-  min-height: 100vh;
-  direction: rtl;
-  padding: 0; }
+  min-height: 100vh; }
 
 p {
   text-align: justify; }
@@ -280,6 +278,9 @@ p {
     margin: 1rem;
     max-width: 20rem;
     display: block; }
+
+.alert-dismissible {
+  margin: 3rem; }
 
 .section-teachers {
   display: flex;

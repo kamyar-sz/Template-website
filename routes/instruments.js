@@ -30,17 +30,23 @@ router.post('/', validateInstrument , catchAsync(async(req, res) => {
   const newInstrument = new Instrument(req.body.instrument);
   await Course.updateMany({'_id' : newInstrument.course}, { $push: {instrument: newInstrument._id}})
   await newInstrument.save();
+  req.flash('success', `${newInstrument.name} was successfully Added!`);
   res.redirect('/instruments');
 }));
 
 router.get('/:id', catchAsync(async(req, res) => {
   const instrument = await Instrument.findById(req.params.id).populate('course');
+  if (!instrument) {
+    req.flash('error', 'Cannot find that instrument!');
+    return res.redirect('/instruments');
+  }
   res.render('instruments/show', { instrument });
 }));
 
 router.get('/:id/edit', catchAsync(async(req, res) => {
   const instrument = await Instrument.findById(req.params.id).populate('course');
   const courses = await Course.find({});
+  req.flash('success', `${newInstrument.name} was successfully Updated!`);
   res.render('instruments/edit', { instrument, courses });
 }));
 
@@ -48,6 +54,10 @@ router.get('/:id/edit', catchAsync(async(req, res) => {
 
 router.put('/:id', validateInstrument, catchAsync(async(req, res) => {
   const instrument = await Instrument.findByIdAndUpdate(req.params.id, { ...req.body.instrument });
+  if (!instrument) {
+    req.flash('error', 'Cannot find that instrument!');
+    return res.redirect('/instruments');
+  }
   res.redirect(`/instruments/${instrument._id}`);
 }));
 
@@ -56,6 +66,7 @@ router.delete('/:id', async(req, res) => {
   const instrument = await Instrument.findById(id);
   await Course.findByIdAndUpdate(instrument.course, { $pull: { instrument : id }});
   await Instrument.findByIdAndDelete(id);
+  req.flash('success', `${newInstrument.name} was successfully Deleted!`);
   res.redirect('/instruments');
 });
 
