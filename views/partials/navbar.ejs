@@ -5,7 +5,12 @@
             <li class="navigation__items"><a href="/teachers" class="btn navigation__link">اساتید</a></li>
             <li class="navigation__items"><a href="/instruments" class="btn navigation__link">سازها</a></li>
             <li class="navigation__items"><a href="/courses" class="btn navigation__link">دوره</a></li>
-            <li class="navigation__items"><a href="#" class="btn navigation__link">آشنایی</a></li>
+            <%  if (!currentUser) { %>
+                <li class="navigation__items"><a href="/login" class="btn navigation__link">ورود</a></li>
+                <li class="navigation__items"><a href="/register" class="btn navigation__link">ثبت نام</a></li>
+            <% } else {%>
+                <li class="navigation__items"><a href="/logout" class="btn navigation__link">خروج</a></li>
+            <% } %>
         </ul>
         <a href="/" class="logo">solo</a>
     </nav>

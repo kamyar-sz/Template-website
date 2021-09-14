@@ -5,6 +5,7 @@ const Instrument = require('../models/instrument');
 const { courseSchema } = require('../schemas');
 const catchAsync = require('../utils/catchAsync');
 const expressError = require('../utils/expressErrors');
+const {isLoggedIn} = require('../middleware');
 
 const validateCourse = (req, res, next) => {
   const { error } = courseSchema.validate(req.body);
@@ -21,11 +22,11 @@ router.get('/', catchAsync(async(req, res) => {
   res.render('courses/index', { courses });
 }));
 
-router.get('/new', (req, res) => {
+router.get('/new',isLoggedIn, (req, res) => {
   res.render('courses/new');
 });
 
-router.post('/', validateCourse, catchAsync(async(req, res) => {
+router.post('/',isLoggedIn, validateCourse, catchAsync(async(req, res) => {
   const course = new Course(req.body.course);
   await course.save();
   req.flash('success', `${course.name} was successfully Added!`);
@@ -41,7 +42,7 @@ router.get('/:id', catchAsync(async(req, res) => {
   res.render('courses/show', { course })
 }));
 
-router.get('/:id/edit', catchAsync(async(req, res) => {
+router.get('/:id/edit',isLoggedIn, catchAsync(async(req, res) => {
   const course = await Course.findById(req.params.id);
   if (!course) {
     req.flash('error', 'Cannot find that course!');
@@ -52,13 +53,13 @@ router.get('/:id/edit', catchAsync(async(req, res) => {
 
 // UPDATE HANDLER
 
-router.put('/:id', validateCourse, catchAsync(async(req, res) => {
+router.put('/:id',isLoggedIn, validateCourse, catchAsync(async(req, res) => {
   const course = await Course.findByIdAndUpdate(req.params.id, { ...req.body.course });
   req.flash('success', `${course.name} was successfully Updated!`);
   res.redirect(`/courses/${course._id}`);
 }));
 
-router.delete('/:id', catchAsync(async(req, res) => {
+router.delete('/:id',isLoggedIn, catchAsync(async(req, res) => {
   const { id } = req.params;
   const course = await Course.findById(id);
   await Instrument.findByIdAndUpdate(course.instrument, { $pull: { course : id}});

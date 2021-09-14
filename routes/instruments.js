@@ -5,6 +5,7 @@ const Instrument = require('../models/instrument');
 const { instrumentSchema } = require('../schemas');
 const catchAsync = require('../utils/catchAsync');
 const expressError = require('../utils/expressErrors');
+const {isLoggedIn} = require('../middleware');
 
 const validateInstrument = (req, res, next) => {
   const { error } = instrumentSchema.validate(req.body);
@@ -21,12 +22,12 @@ router.get('/', catchAsync(async(req, res) => {
   res.render('instruments/index', { instruments });
 }));
 
-router.get('/new', catchAsync(async(req, res) => {
+router.get('/new',isLoggedIn, catchAsync(async(req, res) => {
   const courses = await Course.find({})
   res.render('instruments/new', { courses });
 }));
 
-router.post('/', validateInstrument , catchAsync(async(req, res) => {
+router.post('/',isLoggedIn, validateInstrument , catchAsync(async(req, res) => {
   const newInstrument = new Instrument(req.body.instrument);
   await Course.updateMany({'_id' : newInstrument.course}, { $push: {instrument: newInstrument._id}})
   await newInstrument.save();
@@ -43,16 +44,16 @@ router.get('/:id', catchAsync(async(req, res) => {
   res.render('instruments/show', { instrument });
 }));
 
-router.get('/:id/edit', catchAsync(async(req, res) => {
+router.get('/:id/edit',isLoggedIn, catchAsync(async(req, res) => {
   const instrument = await Instrument.findById(req.params.id).populate('course');
   const courses = await Course.find({});
-  req.flash('success', `${newInstrument.name} was successfully Updated!`);
+  req.flash('success', `${instrument.name} was successfully Updated!`);
   res.render('instruments/edit', { instrument, courses });
 }));
 
 // UPDATE HANDLERS
 
-router.put('/:id', validateInstrument, catchAsync(async(req, res) => {
+router.put('/:id',isLoggedIn, validateInstrument, catchAsync(async(req, res) => {
   const instrument = await Instrument.findByIdAndUpdate(req.params.id, { ...req.body.instrument });
   if (!instrument) {
     req.flash('error', 'Cannot find that instrument!');
@@ -61,7 +62,7 @@ router.put('/:id', validateInstrument, catchAsync(async(req, res) => {
   res.redirect(`/instruments/${instrument._id}`);
 }));
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:id',isLoggedIn, async(req, res) => {
   const { id } = req.params;
   const instrument = await Instrument.findById(id);
   await Course.findByIdAndUpdate(instrument.course, { $pull: { instrument : id }});
